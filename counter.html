@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body{
+          background-image: url("387.jpeg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .word-counter-container {
+            display:block;
+            font-family: "Roboto", sans-serif;
+            text-align: center;
+            background-color: rgba(114, 89, 89, 0.523);
+            padding: 1%;
+        }
+        .word-counter-container .input {
+            display: block;
+            width: 100%;
+            height: 200px;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            padding: 13px;
+            box-sizing: content-box;
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            resize: none;
+            max-width: 800px;
+            line-height: 2;
+            margin: 0 auto;
+            box-shadow: #000000;
+        }
+        .word-counter-container .button {
+            padding: 16px 48px;
+            margin: 32px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #b8b8bf;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            transition: all 500ms ease;
+            text-align: center;
+        }
+
+        .word-counter-container .button:hover {
+            background: #222261;
+        }
+
+        .word-counter-container .word-count {
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: #09090c;
+            font-weight:700;
+        }
+        .word-counter-container .word-count span {
+            font-size: 54px;
+            font-weight: bold;     
+        }
+        .input {
+            border: none;
+            padding: 5%;
+            border-radius: 1rem;
+            background: #e8e8e8;
+            box-shadow: 20px 20px 60px #ad9c9c,
+		                -20px -20px 60px #b3a6a6;
+            transition: 0.3s;
+        }
+
+        .input:focus {
+            outline-color: #ac909060;
+            background: #e8e8e8;
+            box-shadow: inset 20px 20px 60px #c5c5c5,
+		                inset -20px -20px 60px #c2b2b289;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://github.com/Mnahil-Naseer/word-_counter.git">
+     <div class="word-counter-container">
+          <h1>Word Counter</h1>
+          <input type="text" name="text" class="input" placeholder="Enter your text..."><br>
+          <button class="button" type="button">Count Words</button>
+          <div class="word-count">Word Count: <span>0</span></div>
+     </div>
+    </a>
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wordsTextarea = document.querySelector(".word-counter-container .input");
+            const button = document.querySelector(".word-counter-container .button");
+            const wordCount = document.querySelector(".word-counter-container .word-count span");
+
+            const countWords = () => {
+                let words = wordsTextarea.value;
+                let wordsTrimmed = words.replace(/\s+/g, " ").trim();
+                let splitWords = wordsTrimmed.split(" ");
+                let numberOfWords = splitWords.length;
+                if (splitWords[0] == "") {
+                    numberOfWords = 0;
+                }
+                wordCount.innerHTML = numberOfWords;
+            };
+
+            button.addEventListener("click", countWords);
+        });
+    </script>
+</body>
+</html>
